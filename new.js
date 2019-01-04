@@ -1,9 +1,11 @@
 var OSinfo = require('./OSinfo');
 var time = require('./time');
-process.stdin.setEncoding('utf-8');
-process.stdin.on('readable', function() {    
-    var input = process.stdin.read(); 
 
+
+process.stdin.setEncoding('utf-8');
+process.stdin.on('readable', function(sec) {
+    var input = process.stdin.read();
+        sec = process.stdin.read();
     if (input !== null) {
     	var instruction = input.toString().trim();
     	switch (instruction) {
@@ -20,11 +22,14 @@ process.stdin.on('readable', function() {
 		    case '/checkTimeM':
 		    	OSinfo.checkTimeMinuts();
 		    break;
+        case '/convertTime':
+		    	OSinfo.time();
+		    break;
 		    case '/getOSinfo':
 		    	OSinfo.print();
-		    break;		    
+		    break;
 		  	default:
 		    	process.stderr.write('Wrong instruction!\n');
-		}
+		  }
     }
 });

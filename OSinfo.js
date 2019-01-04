@@ -1,4 +1,5 @@
 var os = require('os');
+var readlineSync = require('readline-sync');
 
 function getOSinfo() {
 
@@ -37,11 +38,19 @@ function checkTimeMinuts(){
 	var m = Math.floor(upTime/60);
 	var s = Math.floor(upTime%60%60);
     console.log('czas to ', m, ' minut ', s, 'sekund');
+}
 
+function time(){
+	var sec = readlineSync.question('Enter the time in seconds ');
+	sec = Number(sec);
+	var m = Math.floor(sec/60);
+	var s = Math.floor(sec%60%60);
+    console.log('czas to ', m, ' minut ', s, 'sekund');
 }
 
 module.exports = {
 	print: getOSinfo,
 	checkTimeHour: checkTimeHour,
+	time: time,
 	checkTimeMinuts: checkTimeMinuts
 };
