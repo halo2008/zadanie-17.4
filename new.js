@@ -1,6 +1,4 @@
 var OSinfo = require('./OSinfo');
-var time = require('./time');
-
 
 process.stdin.setEncoding('utf-8');
 process.stdin.on('readable', function(sec) {
@@ -16,14 +14,8 @@ process.stdin.on('readable', function(sec) {
 		  	case 'version':
 		  		console.log(process.versions.node);
 		  	break;
-		  	case '/checkTimeH':
-		    	OSinfo.checkTimeHour();
-		    break;
-		    case '/checkTimeM':
-		    	OSinfo.checkTimeMinuts();
-		    break;
         case '/convertTime':
-		    	OSinfo.time();
+		    	OSinfo.convertTime();
 		    break;
 		    case '/getOSinfo':
 		    	OSinfo.print();
