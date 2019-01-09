@@ -23,15 +23,28 @@ function getOSinfo() {
 }
 
 function time(){
-	var sec = readlineSync.question('Enter the time in seconds ');
-	sec = Number(sec);
-	var h = Math.floor(sec/3600);
-	var m = Math.floor(sec%3600/60);
-	var s = Math.floor(sec%3600%60);
-    console.log('czas to ', h , ' godzin ', m, ' minut ', s, 'sekund');
-	m = Math.floor(sec/60);
-	s = Math.floor(sec%60%60);
-		console.log('czas to ', m, ' minut ', s, 'sekund');
+	var seconds = readlineSync.question('Podaj czas w sekundach ');
+	convertTimeHour(seconds);
+	convertTimeMin(seconds);
+}
+
+function convertTimeMin(seconds) {
+	seconds = Number(seconds);
+	m = Math.floor(seconds/60);
+	s = Math.floor(seconds%60%60);
+	var time = {min: m, sec: s};
+
+	console.log('czas w minutach: ', time.min, 'min ', time.sec, 'sec')
+}
+
+function convertTimeHour(seconds) {
+	seconds = Number(seconds);
+	var h = Math.floor(seconds/3600);
+	var m = Math.floor(seconds%3600/60);
+	var s = Math.floor(seconds%3600%60);
+	var time = {hour: h, min: m, sec: s};
+
+	console.log('czas w godzinach ', time.hour , ' godzin ', time.min, ' minut ', time.sec, 'sekund');
 }
 
 module.exports = {
